@@ -72,15 +72,23 @@ Original                   |  Grayscale                |  Histogram Equalization
 ```
 norm_image = (gray_equalized - 128.0)/ 128.0
 ```
-This procedure will enhance the results since the images itself are improved.
+This procedure will enhance the results since the images itself and its information is more meaningful.
 
+### 3. Model Architecture.
+The model used here is inspired in the LeNet architecture which consists in the following:
 
-Original image             |  Corrected image 
-:-------------------------:|:-------------------------:
-![][image3]                |  ![][image4]
+* 2D Convolution: 6 Filters 5x5 + a Bias and stride of 1 by 1. Input = 32x32x1. Output = 28x28x6.
+* ReLu activation. 
+* Max Pooling: Filter 2x2. Stride 1 x 1. Input = 28x28x6. Output = 14x14x6.
+* 2D Convolution: 16 Filters 5x5 + Bias. Stride 1 by 1. Input = 14x14x6. Output = 10x10x16.
+* ReLu Activation.
+* Max Pooling: Filter 2x2. Stride 1 x 1. Input = 10x10x16. Output = 5x5x16.
+* Flatten: Input = 5x5x16. Output = 400.
+* Multilayer perceptron: Input = 400. Output = 120.
+* Multilayer perceptron: Input = 120. Output = 84.
+* ReLu Activation.
+* Multilayer perceptron (Output): Input = 84. Output = 43.
 
-### 3. Thresholding.
-Next step is to obtain the edges of the image. For this the approached that suited the best was two combine the S channel thresholding from HLS color space along with the magnitud of the gradient of RGB images. 
 
 ```
 # S channel thresholding

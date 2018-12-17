@@ -171,9 +171,13 @@ with tf.Session() as sess:
     print("Test Accuracy = {:.3f}".format(test_accuracy))
 ```
 
-### 4.New images.
+### 4. New images.
 
-A set of 5 new images is downloaded from the internet that do not belong to the dataset in order to test their performance.
+A set of 5 new images is downloaded from the internet that do not belong to the dataset in order to test their performance. To feed these images trough the neural network the images have to be resized and the their labels are loaded into a python's list [31  4 26 17 22].
+
+```
+images.append(cv2.resize(np_image, (32, 32)))
+```
 
 Test 1                     |  Test 2                   |  Test 3   
 :-------------------------:|:-------------------------:|:-------------------------:

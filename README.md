@@ -32,7 +32,7 @@ The dataset consists of 3 different pickle files containing images and labels fo
 * Number of validation examples = 4410
 * Number of testing examples = 12630
 
-As it can be seen in the histogras shown below the amount of examples per class in every dataset show similar shapes and regardless from not being uniform distributions the amount of examples per class in the training set is proportional to the same class in test in validation and test datasets.
+As it can be seen in the histogras shown below the amount of examples per class in every dataset show similar shapes and regardless from not being uniform distributions the amount of examples per class in the training set is proportional to the same class in validation and test datasets.
 
 Training                   |  Validation               |  Testing
 :-------------------------:|:-------------------------:|:-------------------------:

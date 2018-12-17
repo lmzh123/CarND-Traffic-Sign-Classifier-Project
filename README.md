@@ -52,7 +52,7 @@ Example 1                  |  Example 2                |  Example 3
 ### 2. Preprocessing
 The pre-processing pipeline consists in two simple steps. First one corresponds to a convert the image to grayscale.
 
-![alt text][image7 =100x20]
+![alt text][image7]
 
 ```
 undist = cv2.undistort(img, mtx, dist, None, mtx) # Undistore the image

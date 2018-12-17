@@ -38,9 +38,9 @@ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.sh
 ```
 Using these found parameters any image can be corrected as the images below.
 
-Original image             |  Corrected image 
-:-------------------------:|:-------------------------:
-![][image1]                |  ![][image2]
+Training                   |  Validation               |  Testing
+:-------------------------:|:-------------------------:|:-------------------------:
+![][image1]                |  ![][image2]              |  ![][image3]
 
 ### 2. Distortion correction.
 

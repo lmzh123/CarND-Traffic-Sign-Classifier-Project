@@ -23,7 +23,8 @@ This projects aims to develop a Deep Neural Network classifier for traffic signs
 [image13]: ./screenshots/test_3.png "Test 3"
 [image14]: ./screenshots/test_4.png "Test 4"
 [image15]: ./screenshots/test_5.png "Test 5"
-
+[image15]: ./screenshots/test_5.png "Test 5"
+[image16]: ./screenshots/00004.jpg "Different"
 
 ### 1. Dataset.
 
@@ -201,6 +202,8 @@ with tf.Session() as sess:
 ```
 
 Only two out of 5 images obtained a correct prediction for an accuracy of `0.40` meaning that the network still does not know how to completely handle the differences between these images and the ones it was trained with. From sight for images 1 and 5 it can be seen that the network relies on the image to not to be rotated and image number 3 differs from the images from the dataset in not having the black shape of the traffic light which might explain it's failure in prediction.
+
+![][image15]  
 
 #### Top 5 predictions
 

@@ -187,7 +187,7 @@ Test 4                     |  Test 5
 :-------------------------:|:-------------------------:
 ![][image14]               |  ![][image15]             
 
-Before making prediction on these images, these have to go trough the same pre-processing steps performed while the network was being trained and from here the predictions can be performed as follows:
+Before making prediction on these images, these have to go trough the same pre-processing steps performed while the network was being trained and from here the predictions can be performed obtaining: [23  4 18 17 34].
 
 ```
 # Preprocess the images

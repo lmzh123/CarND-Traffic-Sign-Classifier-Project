@@ -98,7 +98,7 @@ y = tf.placeholder(tf.int32, (None))
 one_hot_y = tf.one_hot(y, 43)
 ```
 
-The learning rate is set to `0.001` experimentaly and the loss function to optimize using tehe Adam Optimization Algorithm will the the crossentropy between the one-hot encoded labels and the logits obtained by the model descrbed before.
+The learning rate is set to `0.001` experimentaly and the loss function to optimize using tehe Adam Optimization Algorithm will the the cross entropy between the one-hot encoded labels and the logits obtained by the model described before.
 
 ```
 rate = 0.001
@@ -110,6 +110,55 @@ optimizer = tf.train.AdamOptimizer(learning_rate = rate)
 training_operation = optimizer.minimize(loss_operation)
 ```
 
+The accuracy of the model will be the mean of the correct predictions and this metric will be evaluated every epoch for every image of the batch.
+
+```
+# A model to evaluate the accuracy is defined
+EPOCHS = 100
+BATCH_SIZE = 128
+
+correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(one_hot_y, 1))
+accuracy_operation = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+saver = tf.train.Saver()
+
+def evaluate(X_data, y_data):
+    num_examples = len(X_data)
+    total_accuracy = 0
+    sess = tf.get_default_session()
+    for offset in range(0, num_examples, BATCH_SIZE):
+        batch_x, batch_y = X_data[offset:offset+BATCH_SIZE], y_data[offset:offset+BATCH_SIZE]
+        accuracy = sess.run(accuracy_operation, feed_dict={x: batch_x, y: batch_y})
+        total_accuracy += (accuracy * len(batch_x))
+    return total_accuracy / num_examples
+```
+
+The training consists then in optimize for every epoch the crossentropy as follows.
+
+```
+# The features and labels are shuffled every epoch
+from sklearn.utils import shuffle
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    num_examples = len(X_train)
+    
+    print("Training...")
+    print()
+    for i in range(EPOCHS):
+        X_train, y_train = shuffle(X_train, y_train)
+        for offset in range(0, num_examples, BATCH_SIZE):
+            end = offset + BATCH_SIZE
+            batch_x, batch_y = X_train[offset:end], y_train[offset:end]
+            sess.run(training_operation, feed_dict={x: batch_x, y: batch_y})
+            
+        validation_accuracy = evaluate(X_valid, y_valid)
+        print("EPOCH {} ...".format(i+1))
+        print("Validation Accuracy = {:.3f}".format(validation_accuracy))
+        print()
+        
+    saver.save(sess, './lenet')
+    print("Model saved")
+```
 
 ### 4. Bird-eye view.
 

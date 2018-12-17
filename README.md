@@ -28,10 +28,10 @@ This projects aims to develop a Deep Neural Network classifier for traffic signs
 
 The dataset consists of 3 different pickle files containing images and labels for the training, the validation and the testing.
 
-Number of training examples = 34799
-Number of testing examples = 12630
-Image data shape = (32, 32, 3)
-Number of classes = 43
+* Number of training examples = 34799
+* Number of testing examples = 12630
+* Image data shape = (32, 32, 3)
+* Number of classes = 43
 
 ```
 ret, corners = cv2.findChessboardCorners(gray, (nx, ny), None)

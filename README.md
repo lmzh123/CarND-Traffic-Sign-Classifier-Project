@@ -200,4 +200,10 @@ with tf.Session() as sess:
     print("Prediction = {}".format(results))   
 ```
 
-Only two out of 5 images obtained a correct prediction for an accuracy of `0.40` meaning that the network still does not know how to completely handle the differences between these images and the ones it was trained with. From sight for images 1 and 5 it can be seen that the network relies on the image to not be rotated and image number 3 differs from the images from the dataset in not having the black shape of the traffic light which might explain it's failure in prediction. 
+Only two out of 5 images obtained a correct prediction for an accuracy of `0.40` meaning that the network still does not know how to completely handle the differences between these images and the ones it was trained with. From sight for images 1 and 5 it can be seen that the network relies on the image to not be rotated and image number 3 differs from the images from the dataset in not having the black shape of the traffic light which might explain it's failure in prediction.
+
+* Correct class: 31, 5 most probable classes: [23 31 19  5 30]
+* Correct class: 4 , 5 most probable classes:  [4  0  1 31 37]
+* Correct class: 26, 5 most probable classes: [18 11 37 27 26]
+* Correct class: 17, 5 most probable classes: [17 13 34 32 14]
+* Correct class: 22, 5 most probable classes: [34 28 35  1 30]

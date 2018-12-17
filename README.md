@@ -54,7 +54,13 @@ Example 1                  |  Example 2                |  Example 3
 The pre-processing pipeline consists in three different steps. 
 
 * Grayscale: The RGB channels disappear and only one channel corresponding to intensities remain.
+```
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+```
 * Histogram equalzation: The contrast of the image is enhanced obtaining a more uniform histogram.
+```
+gray_equalized = cv2.equalizeHist(gray)
+```
 
 Original                   |  Grayscale                |  Histogram Equalization   
 :-------------------------:|:-------------------------:|:-------------------------:
@@ -64,9 +70,9 @@ Original                   |  Grayscale                |  Histogram Equalization
 
 ![][image10]  
 ```
-undist = cv2.undistort(img, mtx, dist, None, mtx) # Undistore the image
+norm_image = (gray_equalized - 128.0)/ 128.0
 ```
-This procedure will ensure that the calculations performed will correspond to real world measurements.
+This procedure will enhance the results since the images itself are improved.
 
 
 Original image             |  Corrected image 

@@ -89,29 +89,27 @@ The model used here is inspired in the LeNet architecture which consists in the 
 * ReLu Activation.
 * Multilayer perceptron (Output): Input = 84. Output = 43.
 
+### 3. Model Training.
+Placeholders for both the features and the labels are defined. The one-hot encoding is applied to the labels.
 
 ```
-# S channel thresholding
-hls = cv2.cvtColor(img, cv2.COLOR_RGB2HLS)
-s_channel = hls[:,:,2]
-s_binary = np.zeros_like(s_channel)
-s_binary[(s_channel >= s_thresh[0]) & (s_channel <= s_thresh[1])] = 1
-```
-```
-# Gradient thresholding
-gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0) 
-sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1)
-abs_sobelx = np.absolute(sobelx) 
-abs_sobely = np.absolute(sobely)
-# Threshold by magnitud
-mag = np.sqrt(np.square(sobelx)+np.square(sobely))
-scaled_mag = np.uint8(255*mag/np.max(mag))
-mag_binary = np.zeros_like(scaled_mag)
-mag_binary[(scaled_mag >= mag_thresh[0]) & (scaled_mag <= mag_thresh[1])] = 1
+x = tf.placeholder(tf.float32, (None, 32, 32, 1))
+y = tf.placeholder(tf.int32, (None))
+one_hot_y = tf.one_hot(y, 43)
 ```
 
-![alt text][image5]
+The learning rate is set to `0.001` experimentaly and the loss function to optimize using tehe Adam Optimization Algorithm will the the crossentropy between the one-hot encoded labels and the logits obtained by the model descrbed before.
+
+```
+rate = 0.001
+
+logits = LeNet(x)
+cross_entropy = tf.nn.softmax_cross_entropy_with_logits_v2(labels=one_hot_y, logits=logits)
+loss_operation = tf.reduce_mean(cross_entropy)
+optimizer = tf.train.AdamOptimizer(learning_rate = rate)
+training_operation = optimizer.minimize(loss_operation)
+```
+
 
 ### 4. Bird-eye view.
 

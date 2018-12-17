@@ -204,7 +204,8 @@ Only two out of 5 images obtained a correct prediction for an accuracy of `0.40`
 
 #### Top 5 predictions
 
-This model states that the value with the highest probability tells to which class every belong, but it's possible
+Using the function `tf.nn.top_k()` the classes of highest probabilities for each image can be obtain. This is useful to gain some insight of what the network is doing or why it missclassified some input.
+
 ```
 k = 5
 softmax = tf.nn.softmax(logits)
@@ -216,6 +217,7 @@ with tf.Session() as sess:
     print("Values per image = {}".format(val))
     print("Index per image = {}".format(ind))
 ```
+Notice that the second largest probability for the first image is it's correct class, the third images has it's correct class in the fifth place and for the fifth image it does not appear in it's 5 top values.
 
 * Correct class: 31, 5 most probable classes: [23 31 19  5 30]
 * Correct class: 4, 5 most probable classes: [4  0  1 31 37]

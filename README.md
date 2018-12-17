@@ -29,13 +29,18 @@ This projects aims to develop a Deep Neural Network classifier for traffic signs
 The dataset consists of 3 different pickle files containing images and labels for the training, the validation and the testing.
 
 * Number of training examples = 34799
+* Number of validation examples = 4410
 * Number of testing examples = 12630
+
+Training                   |  Validation               |  Testing
+:-------------------------:|:-------------------------:|:-------------------------:
+![][image1]                |  ![][image2]              |  ![][image3]
+
+The images come in RGB format and are already contained in numpy arrays and the labels come as a list of integers.
+
 * Image data shape = (32, 32, 3)
 * Number of classes = 43
 
-```
-ret, corners = cv2.findChessboardCorners(gray, (nx, ny), None)
-```
 Once all the corners are located and stored in a list called `imgpoints` the calibration matrix and the distortion coefficients are calculated using the following OpenCV built in function where `objpoints` is just an enumeration for further corners correspondence between images. 
 
 ```
@@ -43,9 +48,7 @@ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.sh
 ```
 Using these found parameters any image can be corrected as the images below.
 
-Training                   |  Validation               |  Testing
-:-------------------------:|:-------------------------:|:-------------------------:
-![][image1]                |  ![][image2]              |  ![][image3]
+
 
 ### 2. Distortion correction.
 

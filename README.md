@@ -14,14 +14,15 @@ This projects aims to develop a Deep Neural Network classifier for traffic signs
 [image4]: ./screenshots/example_1.png "Example 1"
 [image5]: ./screenshots/example_2.png "Example 2"
 [image6]: ./screenshots/example_3.png "Example 3"
-[image7]: ./screenshots/gray.jpg "Gray"
-[image8]: ./screenshots/equalized.jpg "Equalized"
-[image9]: ./screenshots/normalized.png "Normalized"
-[image10]: ./screenshots/test_1.png "Test 1"
-[image11]: ./screenshots/test_2.png "Test 2"
-[image12]: ./screenshots/test_3.png "Test 3"
-[image13]: ./screenshots/test_4.png "Test 4"
-[image14]: ./screenshots/test_5.png "Test 5"
+[image7]: ./screenshots/normal.jpg "Original"
+[image8]: ./screenshots/gray.jpg "Gray"
+[image9]: ./screenshots/equalized.jpg "Equalized"
+[image10]: ./screenshots/normalized.png "Normalized"
+[image11]: ./screenshots/test_1.png "Test 1"
+[image12]: ./screenshots/test_2.png "Test 2"
+[image13]: ./screenshots/test_3.png "Test 3"
+[image14]: ./screenshots/test_4.png "Test 4"
+[image15]: ./screenshots/test_5.png "Test 5"
 
 
 ### 1. Dataset.
@@ -52,7 +53,10 @@ Example 1                  |  Example 2                |  Example 3
 ### 2. Preprocessing
 The pre-processing pipeline consists in two simple steps. First one corresponds to a convert the image to grayscale.
 
-![alt text][image7]
+Original                   |  Grayscale                |  Histogram Equalization   |  Normalized
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![][image7]                |  ![][image8]              |  ![][image9]              |  ![][image10]
+
 
 ```
 undist = cv2.undistort(img, mtx, dist, None, mtx) # Undistore the image

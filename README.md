@@ -199,3 +199,5 @@ with tf.Session() as sess:
     results = sess.run(prediction, feed_dict={x:test_images_processed})
     print("Prediction = {}".format(results))   
 ```
+
+Only two out of 5 images obtained a correct prediction for an accuracy of `0.40` meaning that the network still does not know how to completely handle the differences between these images and the ones it was trained with.

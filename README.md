@@ -43,7 +43,11 @@ The images come in RGB format and are already contained in numpy arrays and the 
 * Image data shape = (32, 32, 3)
 * Number of classes = 43
 
-Once all the corners are located and stored in a list called `imgpoints` the calibration matrix and the distortion coefficients are calculated using the following OpenCV built in function where `objpoints` is just an enumeration for further corners correspondence between images. 
+Every image has a corresponding label and these labels correspond to a category of traffic signal. These categories can be seen in the file `signnames.csv`
+
+Example 1                  |  Example 2                |  Example 3
+:-------------------------:|:-------------------------:|:-------------------------:
+![][image4]                |  ![][image5]              |  ![][image6]
 
 ```
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)

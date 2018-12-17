@@ -43,22 +43,16 @@ The images come in RGB format and are already contained in numpy arrays and the 
 * Image data shape = (32, 32, 3)
 * Number of classes = 43
 
-Every image has a corresponding label and these labels correspond to a category of traffic signal. These categories can be seen in the file `signnames.csv`
+Every image has a corresponding label and these labels correspond to a category of traffic signal. These categories can be seen in the file `signnames.csv`.
 
 Example 1                  |  Example 2                |  Example 3
 :-------------------------:|:-------------------------:|:-------------------------:
 ![][image4]                |  ![][image5]              |  ![][image6]
 
-```
-ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-```
-Using these found parameters any image can be corrected as the images below.
+### 2. Preprocessing
+The pre-processing pipeline consists in two simple steps. First one corresponds to a convert the image to grayscale.
 
-
-
-### 2. Distortion correction.
-
-Using the found calibration parameters every incoming image from the camera is corrected using the following function.
+![alt text][image7]
 
 ```
 undist = cv2.undistort(img, mtx, dist, None, mtx) # Undistore the image

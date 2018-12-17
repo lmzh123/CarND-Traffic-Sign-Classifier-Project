@@ -33,7 +33,7 @@ The dataset consists of 3 different pickle files containing images and labels fo
 * Number of validation examples = 4410
 * Number of testing examples = 12630
 
-As it can be seen in the histogras shown below the amount of examples per class in every dataset show similar shapes and regardless from not being uniform distributions the amount of examples per class in the training set is proportional to the same class in validation and test datasets.
+As it can be seen in the histograms shown below, the amount of examples per class in every dataset show similar shapes and regardless from not having an uniform distributions, the amount of examples per class in the training set is proportional to the same class in validation and test datasets per class.
 
 Training                   |  Validation               |  Testing
 :-------------------------:|:-------------------------:|:-------------------------:
@@ -72,7 +72,7 @@ Original                   |  Grayscale                |  Histogram Equalization
 ```
 norm_image = (gray_equalized - 128.0)/ 128.0
 ```
-This procedure will enhance the results since the images itself and its information is more meaningful.
+This procedure will enhance the results since the images itselves and their information is more meaningful.
 
 ### 3. Model Architecture.
 The model used here is inspired in the LeNet architecture which consists in the following:
@@ -90,7 +90,7 @@ The model used here is inspired in the LeNet architecture which consists in the 
 * Multilayer perceptron (Output): Input = 84. Output = 43.
 
 ### 3. Model Training.
-Placeholders for both the features and the labels are defined. The one-hot encoding is applied to the labels.
+Placeholders for both the features and the labels are defined and the one-hot encoding is applied to the labels.
 
 ```
 x = tf.placeholder(tf.float32, (None, 32, 32, 1))
@@ -98,7 +98,7 @@ y = tf.placeholder(tf.int32, (None))
 one_hot_y = tf.one_hot(y, 43)
 ```
 
-The learning rate is set to `0.001` experimentaly and the loss function to optimize using tehe Adam Optimization Algorithm will the the cross entropy between the one-hot encoded labels and the logits obtained by the model described before.
+The learning rate is set to `0.001` experimentaly and the loss function will be optimized using the Adam Optimization Algorithm. This loss function is the cross entropy between the one-hot encoded labels and the logits obtained by the model described before.
 
 ```
 rate = 0.001
@@ -132,7 +132,7 @@ def evaluate(X_data, y_data):
     return total_accuracy / num_examples
 ```
 
-The training consists then in optimize for every epoch the crossentropy as follows.
+The training consists in optimizing the CNN weights according to the cross entropy results for every epoch.
 
 ```
 # The features and labels are shuffled every epoch
@@ -173,7 +173,7 @@ with tf.Session() as sess:
 
 ### 4. New images.
 
-A set of 5 new images is downloaded from the internet that do not belong to the dataset in order to test their performance. To feed these images trough the neural network the images have to be resized and the their labels are loaded into a python's list [31  4 26 17 22].
+A set of 5 new images is downloaded from the internet, these images do not belong to the original dataset and this is in order to test it's performance. To feed these trough the neural network the images have to be resized and their labels are loaded into a python's list [31  4 26 17 22].
 
 ```
 images.append(cv2.resize(np_image, (32, 32)))
@@ -200,7 +200,7 @@ with tf.Session() as sess:
     print("Prediction = {}".format(results))   
 ```
 
-Only two out of 5 images obtained a correct prediction for an accuracy of `0.40` meaning that the network still does not know how to completely handle the differences between these images and the ones it was trained with. From sight for images 1 and 5 it can be seen that the network relies on the image to not be rotated and image number 3 differs from the images from the dataset in not having the black shape of the traffic light which might explain it's failure in prediction.
+Only two out of 5 images obtained a correct prediction for an accuracy of `0.40` meaning that the network still does not know how to completely handle the differences between these images and the ones it was trained with. From sight for images 1 and 5 it can be seen that the network relies on the image to not to be rotated and image number 3 differs from the images from the dataset in not having the black shape of the traffic light which might explain it's failure in prediction.
 
 #### Top 5 predictions
 
@@ -217,7 +217,7 @@ with tf.Session() as sess:
     print("Values per image = {}".format(val))
     print("Index per image = {}".format(ind))
 ```
-Notice that the second largest probability for the first image is it's correct class, the third image has it's correct class in the fifth place and for image number 5 it does not appear in it's 5 top values.
+Notice that the second largest probability for the first image is it's correct class, the third image has it's correct class in the fifth place and for image number 5 it does not appear in it's 5 top values meaning that the CNN layers somehow get a few correct activations.
 
 * Correct class: 31, 5 most probable classes: [23 31 19  5 30]
 * Correct class: 4, 5 most probable classes: [4  0  1 31 37]

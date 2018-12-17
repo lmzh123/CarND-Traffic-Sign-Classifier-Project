@@ -186,3 +186,16 @@ Test 1                     |  Test 2                   |  Test 3
 Test 4                     |  Test 5                   
 :-------------------------:|:-------------------------:
 ![][image14]               |  ![][image15]             
+
+Before making prediction on these images, these have to go trough the same pre-processing steps performed while the network was being trained and from here the predictions can be performed as follows:
+
+```
+# Preprocess the images
+test_images_processed = preprocessing(test_images)
+
+prediction = tf.argmax(logits, 1)
+with tf.Session() as sess:
+    saver.restore(sess, tf.train.latest_checkpoint('.'))
+    results = sess.run(prediction, feed_dict={x:test_images_processed})
+    print("Prediction = {}".format(results))   
+```

@@ -217,7 +217,7 @@ with tf.Session() as sess:
     print("Values per image = {}".format(val))
     print("Index per image = {}".format(ind))
 ```
-Notice that the second largest probability for the first image is it's correct class, the third images has it's correct class in the fifth place and for the fifth image it does not appear in it's 5 top values.
+Notice that the second largest probability for the first image is it's correct class, the third image has it's correct class in the fifth place and for image number 5 it does not appear in it's 5 top values.
 
 * Correct class: 31, 5 most probable classes: [23 31 19  5 30]
 * Correct class: 4, 5 most probable classes: [4  0  1 31 37]

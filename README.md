@@ -51,13 +51,18 @@ Example 1                  |  Example 2                |  Example 3
 ![][image4]                |  ![][image5]              |  ![][image6]
 
 ### 2. Preprocessing
-The pre-processing pipeline consists in two simple steps. First one corresponds to a convert the image to grayscale.
+The pre-processing pipeline consists in three different steps. 
 
-Original                   |  Grayscale                |  Histogram Equalization   |  Normalized
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![][image7]                |  ![][image8]              |  ![][image9]              |  ![][image10]
+* Grayscale: The RGB channels disappear and only one channel corresponding to intensities remain.
+* Histogram equalzation: The contrast of the image is enhanced obtaining a more uniform histogram.
 
+Original                   |  Grayscale                |  Histogram Equalization   
+:-------------------------:|:-------------------------:|:-------------------------:
+![][image7]                |  ![][image8]              |  ![][image9]              
 
+* Normalization: The values of the intensity image no longer go from 0 to 255, but they range now from -1 to 1 in floating point format. Still using Matplotlib visualization the image looks identical to equalized one.
+
+![][image10]  
 ```
 undist = cv2.undistort(img, mtx, dist, None, mtx) # Undistore the image
 ```
